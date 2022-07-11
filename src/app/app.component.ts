@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ButtonComponent } from './components/button/button.components';
 
 @Component({
   selector: 'app-root',
@@ -6,24 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild(ButtonComponent)
+  viewChild: ButtonComponent = new ButtonComponent;
   title = "app"
-  isLoading = false
-  status = "Загрузить данные с сервера"
-  isShowResetButton = false
+  counter: number = 0
+  randomNumber: number = Math.floor(Math.random()*100)
 
-  resetData = () => {
-    this.status = "Загрузить данные с сервера"
-    this.isShowResetButton = false
+  constructor() {}
+
+  counterUp = () => {
+    this.counter++
   }
 
-  toggleLoading = () => {
-    this.isLoading = true
-    this.status = "Загрузка данных"
-
-    setTimeout(() => {
-      this.isLoading = false
-      this.status = "Данные загружены!"
-      this.isShowResetButton = true
-    }, 3000);
-  };
+  setRandomNumber = () => {
+    this.randomNumber = Math.floor(Math.random()*100)
+  }
 }

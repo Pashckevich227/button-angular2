@@ -1,9 +1,12 @@
 <div class="content">
-  <button class="button" [disabled]="isLoading" (click)="toggleLoading()">
-    <img *ngIf="isLoading" style="width : 36px" src="assets/images/spinner.gif" />
-    <span>{{status}}</span>
-  </button>
-  <button class="button button--reset" *ngIf="isShowResetButton" (click)="resetData()">Сбросить данные</button>
+  <div class="content__item">
+    <button-component name="Увеличить счётчик" (successChanged)="counterUp()"></button-component>
+    <span>{{counter}}</span>
+  </div>
+  <div class="content__item">
+    <button-component name="Новое рандомное число" (successChanged)="setRandomNumber()"></button-component>
+    <span>{{randomNumber}}</span>
+  </div>
 </div>
-
+  
 <router-outlet></router-outlet>
